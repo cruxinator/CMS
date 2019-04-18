@@ -2,6 +2,9 @@
 
 namespace Tests;
 
+use Illuminate\View\Compilers\BladeCompiler;
+use Orchestra\Testbench\Console\Kernel;
+
 class TestCase extends \Orchestra\Testbench\TestCase
 {
     /**
@@ -50,14 +53,14 @@ class TestCase extends \Orchestra\Testbench\TestCase
             'Form' => \Collective\Html\FormFacade::class,
             'HTML' => \Collective\Html\HtmlFacade::class,
             'FormMaker' => \Grafite\Builder\Facades\FormMaker::class,
-            'InputMaker' => \Grafite\Builder\Facades\InputMaker::class
+            'InputMaker' => \Grafite\Builder\Facades\InputMaker::class,
         ];
     }
 
     /**
      * Setup the test environment.
      */
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
         $this->withFactories(__DIR__.'/factories');
@@ -71,5 +74,32 @@ class TestCase extends \Orchestra\Testbench\TestCase
         ]);
         $this->withoutMiddleware();
         $this->withoutEvents();
+    }
+
+    /**
+     * Resolve application Console Kernel implementation.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
+     * @return void
+     */
+    protected function resolveApplicationConsoleKernel($app)
+    {
+        $app->singleton('Illuminate\Contracts\Console\Kernel', Kernel::class);
+        $app->singleton('blade.compiler', function () use ($app) {
+            return new BladeCompiler(
+                $app['files'],
+                $app['config']['view.compiled']
+            );
+        });
+
+        $app->instance('path', $app->path());
+        $app->instance('path.base', $app->basePath());
+        $app->instance('path.lang', $app->langPath());
+        $app->instance('path.config', $app->configPath());
+        $app->instance('path.public', $app->publicPath());
+        $app->instance('path.storage', $app->storagePath());
+        $app->instance('path.database', $app->databasePath());
+        $app->instance('path.resources', $app->resourcePath());
+        $app->instance('path.bootstrap', $app->bootstrapPath());
     }
 }

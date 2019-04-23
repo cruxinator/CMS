@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
+use Illuminate\View\Compilers\BladeCompiler;
 use Intervention\Image\Facades\Image;
 use Intervention\Image\ImageServiceProvider;
 
@@ -130,6 +131,14 @@ class GrafiteCmsProvider extends ServiceProvider
      */
     public function register()
     {
+        $app = $this->app;
+        $app->singleton('blade.compiler', function () use ($app) {
+            return new BladeCompiler(
+                $app['files'],
+                $app['config']['view.compiled']
+            );
+        });
+
         $this->app->register(CmsServiceProvider::class);
         $this->app->register(CmsEventServiceProvider::class);
         $this->app->register(CmsRouteProvider::class);

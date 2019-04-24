@@ -35,6 +35,7 @@ class GrafiteCmsProvider extends ServiceProvider
 {
     /**
      * Alias the services in the boot.
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function boot()
     {
@@ -131,14 +132,6 @@ class GrafiteCmsProvider extends ServiceProvider
      */
     public function register()
     {
-        $app = $this->app;
-        $app->singleton('blade.compiler', function () use ($app) {
-            return new BladeCompiler(
-                $app['files'],
-                $app['config']['view.compiled']
-            );
-        });
-
         $this->app->register(CmsServiceProvider::class);
         $this->app->register(CmsEventServiceProvider::class);
         $this->app->register(CmsRouteProvider::class);

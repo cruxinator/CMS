@@ -18,6 +18,11 @@ class Event extends CmsModel
 
     public static $rules = [
         'title' => 'required',
+        'start_date' => 'required|date',
+        'end_date' => 'required|date',
+        'details' => 'required',
+        'seo_description' => 'nullable',
+        'seo_keywords' => 'nullable'
     ];
 
     protected $appends = [

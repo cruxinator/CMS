@@ -20,7 +20,7 @@
                         <a class="btn btn-warning ml-1" href="{!! Cms::rollbackUrl($blog->translation(request('lang'))) !!}">Rollback</a>
                     @else
                         @if ($blog->is_published)
-                            <a class="btn btn-success ml-1" href="{!! url('blog/'.$blog->url) !!}">Live</a>
+                            <a class="btn btn-success ml-1" href="{!! cms()->url('blog/'.$blog->url) !!}">Live</a>
                         @else
                             <a class="btn btn-outline-success ml-1" href="{!! cms()->url('preview/blog/'.$blog->id) !!}">Preview</a>
                         @endif

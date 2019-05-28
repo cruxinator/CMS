@@ -15,6 +15,7 @@ use Grafite\Cms\Console\Setup;
 use Grafite\Cms\Console\ThemeGenerate;
 use Grafite\Cms\Console\ThemeLink;
 use Grafite\Cms\Console\ThemePublish;
+use Grafite\Cms\Models\Archive;
 use Grafite\Cms\Providers\CmsEventServiceProvider;
 use Grafite\Cms\Providers\CmsModuleProvider;
 use Grafite\Cms\Providers\CmsRouteProvider;
@@ -22,6 +23,7 @@ use Grafite\Cms\Providers\CmsServiceProvider;
 use GrahamCampbell\Markdown\Facades\Markdown;
 use GrahamCampbell\Markdown\MarkdownServiceProvider;
 use Illuminate\Foundation\AliasLoader;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\View;
@@ -124,6 +126,13 @@ class GrafiteCmsProvider extends ServiceProvider
 
         Blade::directive('markdown', function ($expression) {
             return "<?php echo Markdown::convertToHtml($expression); ?>";
+        });
+
+        Archive::saving(function (Archive $model) {
+            $user = Auth::user();
+            $id = $user ? $user->getKey() : null;
+
+            $model->updated_by = $id;
         });
     }
 

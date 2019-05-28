@@ -3,10 +3,15 @@
 namespace Tests;
 
 use Illuminate\View\Compilers\BladeCompiler;
+use Orchestra\Testbench\Concerns\WithLaravelMigrations;
 use Orchestra\Testbench\Console\Kernel;
+use Orchestra\Testbench\Tests\Stubs\Providers\ServiceProvider;
+use Tests\Models\User;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
+    use WithLaravelMigrations;
+
     /**
      * Define environment setup.
      *
@@ -24,6 +29,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
         $app['config']->set('minify.config.ignore_environments', ['local', 'testing']);
         $app->make('Illuminate\Contracts\Http\Kernel')->pushMiddleware('Illuminate\Session\Middleware\StartSession');
+
 
         $app['Illuminate\Contracts\Auth\Access\Gate']->define('cms', function ($user) {
             return true;
@@ -69,6 +75,9 @@ class TestCase extends \Orchestra\Testbench\TestCase
             '--provider' => 'Grafite\Cms\GrafiteCmsProvider',
             '--force' => true,
         ]);
+
+        config(['cms.user-model' => User::class]);
+        $this->loadLaravelMigrations('testbench');
         $this->artisan('migrate', [
             '--database' => 'testbench',
         ]);

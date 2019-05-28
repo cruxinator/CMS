@@ -35,4 +35,13 @@ class Archive extends CmsModel
 
         return $this->belongsTo($userModel, 'updated_by', $keyCol);
     }
+
+    public function getUpdatedEmailAttribute()
+    {
+        $user = $this->updatedBy;
+        if (null === $user) {
+            return null;
+        }
+        return $user->email;
+    }
 }

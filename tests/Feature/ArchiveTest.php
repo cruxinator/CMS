@@ -60,4 +60,39 @@ class ArchiveTest extends TestCase
         $nuUser = $foo->updatedBy()->first();
         $this->assertNull($nuUser);
     }
+
+    public function testUpdatedEmailAttribute()
+    {
+        $user = new User();
+        $user->name = 'User';
+        $user->email = 'example@example.com';
+        $user->password = Hash::make('password');
+        $user->save();
+        $this->actingAs($user);
+
+        $foo = new Archive();
+        $foo->token = '';
+        $foo->entity_id = 1;
+        $foo->entity_type = Blog::class;
+        $foo->entity_data = '';
+        $foo->save();
+
+        $expected = 'example@example.com';
+        $actual = $foo->updated_email;
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testUpdatedEmailAttributeNoUser()
+    {
+        $foo = new Archive();
+        $foo->token = '';
+        $foo->entity_id = 1;
+        $foo->entity_type = Blog::class;
+        $foo->entity_data = '';
+        $foo->save();
+
+        $expected = null;
+        $actual = $foo->updated_email;
+        $this->assertEquals($expected, $actual);
+    }
 }

@@ -9,6 +9,7 @@ use Grafite\Cms\Traits\Translatable;
 /**
  * @property string hero_image
  * @property int id
+ * @property mixed tags
  */
 class Blog extends CmsModel
 {
@@ -82,5 +83,13 @@ class Blog extends CmsModel
         }
 
         return $blocks;
+    }
+
+    public function getTags() : array
+    {
+        if (!array_key_exists('tags', $this->attributes) || null === $this->attributes['tags']) {
+            return [];
+        }
+        return explode(',', $this->tags);
     }
 }

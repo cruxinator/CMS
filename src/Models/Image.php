@@ -9,10 +9,18 @@ use FileService;
 use Grafite\Cms\Models\CmsModel;
 use Grafite\Cms\Services\AssetService;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic as InterventionImage;
 use Storage;
 
+/**
+ * @property mixed tags
+ * @property mixed location
+ * @property string url
+ * @property mixed js_url
+ */
 class Image extends CmsModel
 {
     public $table = 'images';
@@ -56,6 +64,7 @@ class Image extends CmsModel
      * @param string $value
      *
      * @return string
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function getUrlAttribute()
     {
@@ -72,6 +81,7 @@ class Image extends CmsModel
      * Get an S3 image
      *
      * @return string
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function getS3Image()
     {
@@ -112,7 +122,7 @@ class Image extends CmsModel
      * Simple caching tool
      *
      * @param  string $attribute
-     * @param  Clousre $closure
+     * @param  callable $closure
      *
      * @return mixed
      */
@@ -173,6 +183,7 @@ class Image extends CmsModel
      * Staged image if none are found
      *
      * @return string
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function lostImage()
     {
@@ -183,5 +194,13 @@ class Image extends CmsModel
         });
 
         return (string) $image->encode('data-url');
+    }
+
+    public function getTags() : array
+    {
+        if (!array_key_exists('tags', $this->attributes) || null === $this->attributes['tags']) {
+            return [];
+        }
+        return explode(',', $this->tags);
     }
 }

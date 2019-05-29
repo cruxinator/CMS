@@ -17,6 +17,12 @@ class BlogRepository extends CmsRepository
 
     public $table;
 
+    /**
+     * BlogRepository constructor.
+     * @param Blog $model
+     * @param \Grafite\Cms\Repositories\TranslationRepository $translationRepo
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
     public function __construct(Blog $model, TranslationRepository $translationRepo)
     {
         $this->model = $model;
@@ -28,11 +34,13 @@ class BlogRepository extends CmsRepository
      * Returns all paginated EventS.
      *
      * @return \Illuminate\Database\Eloquent\Collection|static[]
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function published()
     {
         return $this->model->where('is_published', 1)
-            ->where('published_at', '<=', Carbon::now(config('app.timezone'))->format('Y-m-d H:i:s'))->orderBy('created_at', 'desc')
+            ->where('published_at', '<=', Carbon::now(config('app.timezone'))
+                ->format('Y-m-d H:i:s'))->orderBy('created_at', 'desc')
             ->paginate(config('cms.pagination', 24));
     }
 
@@ -42,11 +50,13 @@ class BlogRepository extends CmsRepository
      * @param  string $tag
      *
      * @return Illuminate\Support\Collection
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function tags($tag)
     {
         return $this->model->where('is_published', 1)
-            ->where('published_at', '<=', Carbon::now(config('app.timezone'))->format('Y-m-d H:i:s'))
+            ->where('published_at', '<=', Carbon::now(config('app.timezone'))
+                ->format('Y-m-d H:i:s'))
             ->where('tags', 'LIKE', '%'.$tag.'%')->orderBy('created_at', 'desc')
             ->paginate(config('cms.pagination', 24));
     }
@@ -55,6 +65,7 @@ class BlogRepository extends CmsRepository
      * Gets all tags of an entry
      *
      * @return Illuminate\Support\Collection
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function allTags()
     {
@@ -80,9 +91,10 @@ class BlogRepository extends CmsRepository
     /**
      * Stores Blog into database.
      *
-     * @param array $input
+     * @param array $payload
      *
      * @return Blog
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function store($payload)
     {
@@ -91,7 +103,9 @@ class BlogRepository extends CmsRepository
         $payload['title'] = htmlentities($payload['title']);
         $payload['url'] = Cms::convertToURL($payload['url']);
         $payload['is_published'] = (isset($payload['is_published'])) ? (bool) $payload['is_published'] : 0;
-        $payload['published_at'] = (isset($payload['published_at']) && !empty($payload['published_at'])) ? Carbon::parse($payload['published_at'])->format('Y-m-d H:i:s') : Carbon::now(config('app.timezone'))->format('Y-m-d H:i:s');
+        $payload['published_at'] = (isset($payload['published_at']) && !empty($payload['published_at']))
+            ? Carbon::parse($payload['published_at'])->format('Y-m-d H:i:s')
+            : Carbon::now(config('app.timezone'))->format('Y-m-d H:i:s');
 
         if (isset($payload['hero_image'])) {
             $file = request()->file('hero_image');
@@ -108,12 +122,14 @@ class BlogRepository extends CmsRepository
      * @param string $url
      *
      * @return \Illuminate\Support\Collection|null|static|Pages
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function findBlogsByURL($url)
     {
         $blog = null;
 
-        $blog = $this->model->where('url', $url)->where('is_published', 1)->where('published_at', '<=', Carbon::now(config('app.timezone'))->format('Y-m-d H:i:s'))->first();
+        $blog = $this->model->where('url', $url)->where('is_published', 1)
+            ->where('published_at', '<=', Carbon::now(config('app.timezone'))->format('Y-m-d H:i:s'))->first();
 
         if (!$blog) {
             $blog = $this->translationRepo->findByUrl($url, 'Grafite\Cms\Models\Blog');
@@ -137,10 +153,11 @@ class BlogRepository extends CmsRepository
     /**
      * Updates Blog into database.
      *
-     * @param Blog  $blog
-     * @param array $input
+     * @param Blog $blog
+     * @param array $payload
      *
-     * @return Blog
+     * @return Blog|bool
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function update($blog, $payload)
     {
@@ -156,7 +173,12 @@ class BlogRepository extends CmsRepository
         }
 
         if (!empty($payload['lang']) && $payload['lang'] !== config('cms.default-language', 'en')) {
-            return $this->translationRepo->createOrUpdate($blog->id, 'Grafite\Cms\Models\Blog', $payload['lang'], $payload);
+            return $this->translationRepo->createOrUpdate(
+                $blog->id,
+                'Grafite\Cms\Models\Blog',
+                $payload['lang'],
+                $payload
+            );
         } else {
             $payload['url'] = Cms::convertToURL($payload['url']);
             $payload['is_published'] = (isset($payload['is_published'])) ? (bool) $payload['is_published'] : 0;

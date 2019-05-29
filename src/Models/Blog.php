@@ -35,6 +35,7 @@ class Blog extends CmsModel
         'entry',
         'tags',
         'is_published',
+        'is_featured',
         'seo_description',
         'seo_keywords',
         'url',
@@ -101,5 +102,15 @@ class Blog extends CmsModel
     public function scopeUnPublished($query)
     {
         return $query->where('is_published', 0);
+    }
+
+    public function scopeFeatured($query)
+    {
+        return $query->where('is_featured', 1);
+    }
+
+    public function scopeUnFeatured($query)
+    {
+        return $query->where('is_featured', 0);
     }
 }

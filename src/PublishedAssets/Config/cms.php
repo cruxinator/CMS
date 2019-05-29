@@ -202,6 +202,10 @@ return [
                     'custom' => 'autocomplete="off"',
                     'after' => '<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>',
                 ],
+                'is_featured' => [
+                    'type' => 'checkbox',
+                    'alt_name' => 'Featured',
+                ],
             ],
         ],
 

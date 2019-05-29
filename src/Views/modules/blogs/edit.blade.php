@@ -83,7 +83,7 @@
                             {!! FormMaker::setColumns(2)->fromObject($blog->asObject(), config('cms.forms.blog.seo')) !!}
                         </div>
                     </div>
-                    {!! FormMaker::setColumns(2)->fromObject($blog->asObject(), config('cms.forms.blog.publish')) !!}
+                    {!! FormMaker::setColumns(3)->fromObject($blog->asObject(), config('cms.forms.blog.publish')) !!}
 
                     @include('cms::modules.blocks', ['item' => $blog->asObject()])
 

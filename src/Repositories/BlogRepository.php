@@ -103,6 +103,7 @@ class BlogRepository extends CmsRepository
         $payload['title'] = htmlentities($payload['title']);
         $payload['url'] = Cms::convertToURL($payload['url']);
         $payload['is_published'] = (isset($payload['is_published'])) ? (bool) $payload['is_published'] : 0;
+        $payload['is_featured'] = (isset($payload['is_featured'])) ? (bool) $payload['is_featured'] : 0;
         $payload['published_at'] = (isset($payload['published_at']) && !empty($payload['published_at']))
             ? Carbon::parse($payload['published_at'])->format('Y-m-d H:i:s')
             : Carbon::now(config('app.timezone'))->format('Y-m-d H:i:s');
@@ -165,6 +166,20 @@ class BlogRepository extends CmsRepository
     }
 
     /**
+     * @param int $latest
+     * @return mixed
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
+    public function findBlogsFeatured(int $latest = 4)
+    {
+        return $this->model->featured()
+            ->where('published_at', '<=', Carbon::now(config('app.timezone'))->format('Y-m-d H:i:s'))
+            ->orderBy('published_at', 'desc')
+            ->take($latest)
+            ->get();
+    }
+
+    /**
      * Updates Blog into database.
      *
      * @param Blog $blog
@@ -178,6 +193,7 @@ class BlogRepository extends CmsRepository
         $payload = $this->parseBlocks($payload, 'blog');
 
         $payload['title'] = htmlentities($payload['title']);
+        $payload['is_featured'] = (isset($payload['is_featured'])) ? (bool) $payload['is_featured'] : 0;
 
         if (isset($payload['hero_image'])) {
             app(FileService::class)->delete($blog->hero_image);

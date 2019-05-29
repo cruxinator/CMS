@@ -12,6 +12,7 @@ class CmsModel extends Model
      * Model contructuor.
      *
      * @param array $attributes
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function __construct(array $attributes = [])
     {
@@ -26,6 +27,7 @@ class CmsModel extends Model
      * Get a model as a translatable object
      *
      * @return Object
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function asObject()
     {
@@ -40,6 +42,7 @@ class CmsModel extends Model
      * After the item is saved to the database.
      *
      * @param object $payload
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function afterSaved($payload)
     {

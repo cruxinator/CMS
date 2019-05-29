@@ -6,6 +6,10 @@ use Grafite\Cms\Models\CmsModel;
 use Grafite\Cms\Services\Normalizer;
 use Grafite\Cms\Traits\Translatable;
 
+/**
+ * @property string hero_image
+ * @property int id
+ */
 class Blog extends CmsModel
 {
     use Translatable;
@@ -55,7 +59,11 @@ class Blog extends CmsModel
         return new Normalizer($value);
     }
 
-    public function getHeroImageUrlAttribute($value)
+    /**
+     * @return \Illuminate\Contracts\Routing\UrlGenerator|string
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
+    public function getHeroImageUrlAttribute()
     {
         return url(str_replace('public/', 'storage/', $this->hero_image));
     }

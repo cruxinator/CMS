@@ -38,7 +38,7 @@ class BlogRepository extends CmsRepository
      */
     public function published()
     {
-        return $this->model->where('is_published', 1)
+        return $this->model->published()
             ->where('published_at', '<=', Carbon::now(config('app.timezone'))
                 ->format('Y-m-d H:i:s'))->orderBy('created_at', 'desc')
             ->paginate(config('cms.pagination', 24));
@@ -54,7 +54,7 @@ class BlogRepository extends CmsRepository
      */
     public function tags($tag)
     {
-        return $this->model->where('is_published', 1)
+        return $this->model->published()
             ->where('published_at', '<=', Carbon::now(config('app.timezone'))
                 ->format('Y-m-d H:i:s'))
             ->where('tags', 'LIKE', '%'.$tag.'%')->orderBy('created_at', 'desc')
@@ -128,7 +128,7 @@ class BlogRepository extends CmsRepository
     {
         $blog = null;
 
-        $blog = $this->model->where('url', $url)->where('is_published', 1)
+        $blog = $this->model->where('url', $url)->published()
             ->where('published_at', '<=', Carbon::now(config('app.timezone'))->format('Y-m-d H:i:s'))->first();
 
         if (!$blog) {
@@ -147,7 +147,7 @@ class BlogRepository extends CmsRepository
      */
     public function findBlogsByTag($tag)
     {
-        return $this->model->where('tags', 'LIKE', "%$tag%")->where('is_published', 1)->get();
+        return $this->model->where('tags', 'LIKE', "%$tag%")->published()->get();
     }
 
     /**
@@ -157,7 +157,7 @@ class BlogRepository extends CmsRepository
      */
     public function findBlogsLatest(int $latest = 3)
     {
-        return $this->model->where('is_published', 1)
+        return $this->model->published()
             ->where('published_at', '<=', Carbon::now(config('app.timezone'))->format('Y-m-d H:i:s'))
             ->orderBy('published_at', 'desc')
             ->take($latest)

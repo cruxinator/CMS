@@ -92,4 +92,14 @@ class Blog extends CmsModel
         }
         return explode(',', $this->tags);
     }
+
+    public function scopePublished($query)
+    {
+        return $query->where('is_published', 1);
+    }
+
+    public function scopeUnPublished($query)
+    {
+        return $query->where('is_published', 0);
+    }
 }

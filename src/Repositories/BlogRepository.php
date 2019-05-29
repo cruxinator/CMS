@@ -151,6 +151,20 @@ class BlogRepository extends CmsRepository
     }
 
     /**
+     * @param int $latest
+     * @return mixed
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
+    public function findBlogsLatest(int $latest = 3)
+    {
+        return $this->model->where('is_published', 1)
+            ->where('published_at', '<=', Carbon::now(config('app.timezone'))->format('Y-m-d H:i:s'))
+            ->orderBy('published_at', 'desc')
+            ->take($latest)
+            ->get();
+    }
+
+    /**
      * Updates Blog into database.
      *
      * @param Blog $blog

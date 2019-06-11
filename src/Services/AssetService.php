@@ -60,6 +60,7 @@ class AssetService
      *
      * @param string $encFileName
      *
+     * @param Filesystem $fileSystem
      * @return Download
      */
     public function asPreview($encFileName, Filesystem $fileSystem)
@@ -102,7 +103,7 @@ class AssetService
      * @param string $encFileName
      * @param string $encRealFileName
      *
-     * @return Downlaod
+     * @return Download
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function asDownload($encFileName, $encRealFileName)
@@ -138,6 +139,7 @@ class AssetService
      * @param string $encPath
      * @param string $contentType
      *
+     * @param Filesystem $fileSystem
      * @return Provides the valid
      */
     public function asset($encPath, $contentType, Filesystem $fileSystem)

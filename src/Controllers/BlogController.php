@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Grafite\Cms\Requests\BlogRequest;
 use Grafite\Cms\Services\ValidationService;
 use Grafite\Cms\Repositories\BlogRepository;
+use Illuminate\View\View;
 
 class BlogController extends GrafiteCmsController
 {
@@ -95,7 +96,7 @@ class BlogController extends GrafiteCmsController
      *
      * @param int $id
      *
-     * @return Response
+     * @return View
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function edit($id)

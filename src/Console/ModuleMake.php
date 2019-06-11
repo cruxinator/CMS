@@ -138,6 +138,8 @@ class ModuleMake extends Command
      *
      * @param array $config
      *
+     * @param $moduleDirectory
+     * @param $table
      * @return bool
      */
     public function makeTheProvider($config, $moduleDirectory, $table)

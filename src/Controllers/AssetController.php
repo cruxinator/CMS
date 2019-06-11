@@ -20,7 +20,7 @@ class AssetController extends GrafiteCmsController
      *
      * @param string $encFileName
      *
-     * @return Download
+     * @return \Grafite\Cms\Services\Download
      */
     public function asPublic($encFileName)
     {
@@ -32,7 +32,8 @@ class AssetController extends GrafiteCmsController
      *
      * @param string $encFileName
      *
-     * @return Download
+     * @param Filesystem $fileSystem
+     * @return \Grafite\Cms\Services\Download
      */
     public function asPreview($encFileName, Filesystem $fileSystem)
     {
@@ -45,7 +46,7 @@ class AssetController extends GrafiteCmsController
      * @param string $encFileName
      * @param string $encRealFileName
      *
-     * @return Downlaod
+     * @return \Grafite\Cms\Services\Downlaod
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function asDownload($encFileName, $encRealFileName)
@@ -59,6 +60,7 @@ class AssetController extends GrafiteCmsController
      * @param string $encPath
      * @param string $contentType
      *
+     * @param Filesystem $fileSystem
      * @return Provides the valid
      */
     public function asset($encPath, $contentType, Filesystem $fileSystem)

@@ -14,9 +14,8 @@ class ValidationService
     /**
      * Validation check.
      *
-     * @param string $form      form in question from the config
-     * @param string $module    module name
-     * @param bool   $jsonInput JSON input
+     * @param string $form form in question from the config
+     * @param bool $jsonInput JSON input
      *
      * @return array
      */

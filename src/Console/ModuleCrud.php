@@ -173,6 +173,8 @@ class ModuleCrud extends Command
      *
      * @param array $config
      *
+     * @param $moduleDirectory
+     * @param $table
      * @return bool
      */
     public function makeTheProvider($config, $moduleDirectory, $table)
@@ -188,6 +190,7 @@ class ModuleCrud extends Command
 
     /**
      * Setup the directories for modules.
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function directorySetup()
     {

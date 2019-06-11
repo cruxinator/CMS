@@ -77,6 +77,7 @@ trait Translatable
      * After the item is created in the database.
      *
      * @param object $payload
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function afterCreate($payload)
     {

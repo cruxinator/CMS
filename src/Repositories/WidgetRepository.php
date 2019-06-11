@@ -42,6 +42,7 @@ class WidgetRepository extends CmsRepository
      * @param array $payload
      *
      * @return bool|Widget
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function update($widget, $payload)
     {

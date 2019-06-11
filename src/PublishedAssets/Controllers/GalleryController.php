@@ -19,6 +19,7 @@ class GalleryController extends Controller
      * Display page list.
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function all()
     {
@@ -37,9 +38,9 @@ class GalleryController extends Controller
     /**
      * Display the specified Gallery.
      *
-     * @param string $url
-     *
+     * @param $tag
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function show($tag)
     {

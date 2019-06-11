@@ -26,6 +26,7 @@ class EventsController extends Controller
      * @param string $date
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function calendar($date = null)
     {
@@ -49,6 +50,7 @@ class EventsController extends Controller
      * Display page list.
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function date($date)
     {
@@ -65,6 +67,7 @@ class EventsController extends Controller
      * Display page list.
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function all()
     {
@@ -83,6 +86,7 @@ class EventsController extends Controller
      * @param string $date
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function show($id)
     {

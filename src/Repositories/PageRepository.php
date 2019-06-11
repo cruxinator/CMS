@@ -27,9 +27,9 @@ class PageRepository extends CmsRepository
     /**
      * Stores Pages into database.
      *
-     * @param array $input
-     *
+     * @param $payload
      * @return Pages
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function store($payload)
     {
@@ -58,6 +58,7 @@ class PageRepository extends CmsRepository
      * @param string $url
      *
      * @return \Illuminate\Support\Collection|null|static|Pages
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function findPagesByURL($url)
     {
@@ -87,9 +88,9 @@ class PageRepository extends CmsRepository
      * Updates Pages into database.
      *
      * @param Page $page
-     * @param array $input
-     *
-     * @return Page
+     * @param $payload
+     * @return bool
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function update($page, $payload)
     {

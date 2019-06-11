@@ -22,6 +22,7 @@ class PromotionsController extends GrafiteCmsController
      * Display a listing of the Promotions.
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function index()
     {
@@ -38,6 +39,7 @@ class PromotionsController extends GrafiteCmsController
      * @param Request $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function search(Request $request)
     {
@@ -55,6 +57,7 @@ class PromotionsController extends GrafiteCmsController
      * Show the form for creating a new Promotions.
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function create()
     {
@@ -64,9 +67,10 @@ class PromotionsController extends GrafiteCmsController
     /**
      * Store a newly created Promotions in storage.
      *
-     * @param PromotionRequest $request
+     * @param Request $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function store(Request $request)
     {
@@ -89,6 +93,7 @@ class PromotionsController extends GrafiteCmsController
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function edit($id)
     {
@@ -106,10 +111,11 @@ class PromotionsController extends GrafiteCmsController
     /**
      * Update the specified Promotions in storage.
      *
-     * @param int            $id
+     * @param int $id
      * @param PromotionRequest $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function update($id, PromotionRequest $request)
     {
@@ -134,6 +140,7 @@ class PromotionsController extends GrafiteCmsController
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function destroy($id)
     {

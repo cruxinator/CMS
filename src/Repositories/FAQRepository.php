@@ -27,6 +27,7 @@ class FAQRepository extends CmsRepository
      * @param array $payload
      *
      * @return FAQ
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function store($payload)
     {
@@ -42,10 +43,11 @@ class FAQRepository extends CmsRepository
     /**
      * Updates FAQ into database.
      *
-     * @param FAQ   $FAQ
+     * @param FAQ $FAQ
      * @param array $input
      *
      * @return FAQ
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function update($item, $payload)
     {

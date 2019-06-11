@@ -33,6 +33,7 @@ class CmsRepository
      * Returns all paginated items.
      *
      * @return \Illuminate\Database\Eloquent\Collection|static[]
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function paginated()
     {
@@ -51,6 +52,7 @@ class CmsRepository
      * Returns all published items.
      *
      * @return \Illuminate\Database\Eloquent\Collection|static[]
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function published()
     {
@@ -64,6 +66,7 @@ class CmsRepository
      * Returns all public items
      *
      * @return \Illuminate\Database\Eloquent\Collection|static[]
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function arePublic()
     {
@@ -169,6 +172,7 @@ class CmsRepository
      * @param  string $module
      *
      * @return array
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function parseBlocks($payload, $module)
     {
@@ -200,6 +204,7 @@ class CmsRepository
      * @param  array $currentBlocks
      *
      * @return array
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function parseTemplate($payload, $currentBlocks, $module)
     {

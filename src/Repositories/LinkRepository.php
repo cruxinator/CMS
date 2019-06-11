@@ -28,6 +28,7 @@ class LinkRepository extends CmsRepository
      * @param array $payload
      *
      * @return Links
+     * @throws Exception
      */
     public function store($payload)
     {
@@ -71,10 +72,10 @@ class LinkRepository extends CmsRepository
     /**
      * Updates Links into database.
      *
-     * @param Link  $link
-     * @param array $input
-     *
-     * @return Link
+     * @param Link $link
+     * @param $payload
+     * @return bool
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function update($link, $payload)
     {

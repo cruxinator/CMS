@@ -33,6 +33,7 @@ trait DefaultModuleServiceTrait
      * @param string $slug
      *
      * @return widget
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function widget($slug)
     {
@@ -59,6 +60,7 @@ trait DefaultModuleServiceTrait
      * @param string $slug
      *
      * @return promotion
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function promotion($slug)
     {
@@ -87,6 +89,7 @@ trait DefaultModuleServiceTrait
      * @param string $tag
      *
      * @return collection
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function image($id, $class = '')
     {
@@ -105,6 +108,7 @@ trait DefaultModuleServiceTrait
      * @param string $tag
      *
      * @return collection
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function imageLink($id)
     {

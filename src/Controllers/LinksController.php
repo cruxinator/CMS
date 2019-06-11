@@ -24,6 +24,7 @@ class LinksController extends GrafiteCmsController
      * Display a listing of the Links.
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function index()
     {
@@ -37,7 +38,9 @@ class LinksController extends GrafiteCmsController
     /**
      * Show the form for creating a new Links.
      *
+     * @param Request $request
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function create(Request $request)
     {
@@ -52,6 +55,7 @@ class LinksController extends GrafiteCmsController
      * @param LinksRequest $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function store(LinksRequest $request)
     {
@@ -81,6 +85,7 @@ class LinksController extends GrafiteCmsController
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function edit($id)
     {
@@ -98,10 +103,11 @@ class LinksController extends GrafiteCmsController
     /**
      * Update the specified Links in storage.
      *
-     * @param int          $id
+     * @param int $id
      * @param LinksRequest $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function update($id, LinksRequest $request)
     {
@@ -133,6 +139,7 @@ class LinksController extends GrafiteCmsController
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function destroy($id)
     {

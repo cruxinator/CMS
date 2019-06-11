@@ -23,6 +23,7 @@ class FAQController extends GrafiteCmsController
      * Display a listing of the FAQ.
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function index()
     {
@@ -39,6 +40,7 @@ class FAQController extends GrafiteCmsController
      * @param Request $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function search(Request $request)
     {
@@ -56,6 +58,7 @@ class FAQController extends GrafiteCmsController
      * Show the form for creating a new FAQ.
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function create()
     {
@@ -68,6 +71,7 @@ class FAQController extends GrafiteCmsController
      * @param FAQRequest $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function store(Request $request)
     {
@@ -93,6 +97,7 @@ class FAQController extends GrafiteCmsController
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function edit($id)
     {
@@ -110,10 +115,11 @@ class FAQController extends GrafiteCmsController
     /**
      * Update the specified FAQ in storage.
      *
-     * @param int        $id
+     * @param int $id
      * @param FAQRequest $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function update($id, FAQRequest $request)
     {
@@ -147,6 +153,7 @@ class FAQController extends GrafiteCmsController
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function destroy($id)
     {

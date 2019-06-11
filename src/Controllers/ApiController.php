@@ -40,6 +40,7 @@ class ApiController extends GrafiteCmsController
      * Collect all items of a resource
      *
      * @return Collection
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function all()
     {

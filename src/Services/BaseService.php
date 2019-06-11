@@ -10,6 +10,7 @@ class BaseService
      * @param  string $module
      *
      * @return array
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function getTemplatesAsOptionsArray($module)
     {

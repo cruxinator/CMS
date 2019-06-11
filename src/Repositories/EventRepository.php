@@ -26,6 +26,7 @@ class EventRepository extends CmsRepository
      * Returns all published Events.
      *
      * @return \Illuminate\Database\Eloquent\Collection|static[]
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function findEventsByDate($date)
     {
@@ -41,6 +42,7 @@ class EventRepository extends CmsRepository
      * @param array $payload
      *
      * @return Event
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function store($payload)
     {
@@ -60,6 +62,7 @@ class EventRepository extends CmsRepository
      * @param array $input
      *
      * @return Event
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function update($event, $payload)
     {

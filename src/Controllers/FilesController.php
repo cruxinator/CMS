@@ -35,9 +35,8 @@ class FilesController extends GrafiteCmsController
     /**
      * Display a listing of the Files.
      *
-     * @param Request $request
-     *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function index()
     {
@@ -54,6 +53,7 @@ class FilesController extends GrafiteCmsController
      * @param Request $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function search(Request $request)
     {
@@ -71,6 +71,7 @@ class FilesController extends GrafiteCmsController
      * Show the form for creating a new Files.
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function create()
     {
@@ -80,9 +81,10 @@ class FilesController extends GrafiteCmsController
     /**
      * Store a newly created Files in storage.
      *
-     * @param FileRequest $request
+     * @param Request $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function store(Request $request)
     {
@@ -102,9 +104,11 @@ class FilesController extends GrafiteCmsController
     /**
      * Store a newly created Files in storage.
      *
-     * @param FileRequest $request
+     * @param Request $request
      *
-     * @return Response
+     * @return \Illuminate\Support\Facades\Response
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function upload(Request $request)
     {
@@ -151,6 +155,7 @@ class FilesController extends GrafiteCmsController
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function edit($id)
     {
@@ -168,10 +173,11 @@ class FilesController extends GrafiteCmsController
     /**
      * Update the specified Files in storage.
      *
-     * @param int         $id
+     * @param int $id
      * @param FileRequest $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function update($id, FileRequest $request)
     {
@@ -196,6 +202,7 @@ class FilesController extends GrafiteCmsController
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function destroy($id)
     {
@@ -223,7 +230,9 @@ class FilesController extends GrafiteCmsController
     /**
      * Display the specified Images.
      *
-     * @return Response
+     * @param Request $request
+     * @return \Illuminate\Support\Facades\Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function apiList(Request $request)
     {

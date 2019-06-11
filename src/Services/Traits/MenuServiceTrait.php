@@ -30,9 +30,11 @@ trait MenuServiceTrait
      * Get a view.
      *
      * @param string $slug
-     * @param View   $view
+     * @param View $view
      *
+     * @param string $class
      * @return string
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function menu($slug, $view = null, $class = '')
     {

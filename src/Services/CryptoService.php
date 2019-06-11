@@ -45,6 +45,7 @@ class CryptoService
      * @param string
      * @param string
      * @param int
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function __construct()
     {
@@ -71,6 +72,7 @@ class CryptoService
      * @param string $value String to encrypt
      *
      * @return string
+     * @throws \Exception
      */
     public function encrypt($value)
     {

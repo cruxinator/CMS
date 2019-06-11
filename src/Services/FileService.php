@@ -33,9 +33,10 @@ class FileService
      * Saves File.
      *
      * @param string $fileName File input name
-     * @param string $location Storage location
-     *
+     * @param string $directory
+     * @param array $fileTypes
      * @return array
+     * @throws Exception
      */
     public function saveClone($fileName, $directory = '', $fileTypes = [])
     {
@@ -76,9 +77,12 @@ class FileService
      * Saves File.
      *
      * @param string $fileName File input name
-     * @param string $location Storage location
-     *
+     * @param string $directory
+     * @param array $fileTypes
+     * @param bool $isImage
      * @return array
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function saveFile($fileName, $directory = '', $fileTypes = [], $isImage = false)
     {

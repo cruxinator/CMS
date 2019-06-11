@@ -24,6 +24,7 @@ class FaqController extends Controller
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function all()
     {

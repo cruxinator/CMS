@@ -11,6 +11,7 @@ class BlogService extends BaseService
      * Get templates as options
      *
      * @return array
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function getTemplatesAsOptions()
     {

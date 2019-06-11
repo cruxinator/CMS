@@ -16,6 +16,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
      * Define environment setup.
      *
      * @param \Illuminate\Foundation\Application $app
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     protected function getEnvironmentSetUp($app)
     {
@@ -88,8 +89,9 @@ class TestCase extends \Orchestra\Testbench\TestCase
     /**
      * Resolve application Console Kernel implementation.
      *
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param  \Illuminate\Foundation\Application $app
      * @return void
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     protected function resolveApplicationConsoleKernel($app)
     {

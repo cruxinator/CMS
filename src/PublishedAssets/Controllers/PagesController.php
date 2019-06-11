@@ -17,9 +17,8 @@ class PagesController extends Controller
     /**
      * Homepage.
      *
-     * @param string $url
-     *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function home()
     {
@@ -38,6 +37,7 @@ class PagesController extends Controller
      * Display page list.
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function all()
     {
@@ -56,6 +56,7 @@ class PagesController extends Controller
      * @param string $url
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function show($url)
     {

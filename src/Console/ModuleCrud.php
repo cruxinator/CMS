@@ -32,6 +32,7 @@ class ModuleCrud extends Command
      * Generate a CRUD stack.
      *
      * @return mixed
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function handle()
     {

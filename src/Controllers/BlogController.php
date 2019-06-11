@@ -22,6 +22,7 @@ class BlogController extends GrafiteCmsController
      * Display a listing of the Blog.
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function index()
     {
@@ -38,6 +39,7 @@ class BlogController extends GrafiteCmsController
      * @param Request $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function search(Request $request)
     {
@@ -55,6 +57,7 @@ class BlogController extends GrafiteCmsController
      * Show the form for creating a new Blog.
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function create()
     {
@@ -67,6 +70,7 @@ class BlogController extends GrafiteCmsController
      * @param BlogRequest $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function store(Request $request)
     {
@@ -92,6 +96,7 @@ class BlogController extends GrafiteCmsController
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function edit($id)
     {
@@ -109,10 +114,11 @@ class BlogController extends GrafiteCmsController
     /**
      * Update the specified Blog in storage.
      *
-     * @param int         $id
+     * @param int $id
      * @param BlogRequest $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function update($id, BlogRequest $request)
     {
@@ -147,6 +153,7 @@ class BlogController extends GrafiteCmsController
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function destroy($id)
     {
@@ -171,6 +178,7 @@ class BlogController extends GrafiteCmsController
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function history($id)
     {

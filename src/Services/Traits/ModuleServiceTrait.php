@@ -11,6 +11,7 @@ trait ModuleServiceTrait
      * Determine the module based on URL
      *
      * @return string
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function getModule()
     {
@@ -31,11 +32,12 @@ trait ModuleServiceTrait
     /**
      * Module Assets.
      *
-     * @param string $module      Module name
-     * @param string $path        Asset path
+     * @param string $module Module name
+     * @param string $path Asset path
      * @param string $contentType Content type
      *
      * @return string
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function moduleAsset($module, $path, $contentType = 'null')
     {
@@ -51,11 +53,10 @@ trait ModuleServiceTrait
     /**
      * Module Config.
      *
-     * @param string $module      Module name
-     * @param string $path        Asset path
-     * @param string $contentType Content type
-     *
+     * @param string $module Module name
+     * @param string $path Asset path
      * @return string
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function moduleConfig($module, $path)
     {
@@ -71,9 +72,12 @@ trait ModuleServiceTrait
     /**
      * Module Links.
      *
-     * @param array $ignoredModules   A list of ignored links
+     * @param array $ignoredModules A list of ignored links
      *
+     * @param string $linkClass
+     * @param string $listClass
      * @return string
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function moduleLinks($ignoredModules = [], $linkClass = 'nav-link', $listClass = 'nav-item')
     {

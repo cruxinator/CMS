@@ -47,6 +47,7 @@ class TranslationRepository
      * @param  string $type
      *
      * @return Object|null
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function findByUrl($url, $type)
     {
@@ -67,6 +68,7 @@ class TranslationRepository
      * @param  string $entityType
      *
      * @return Object|null
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function findByEntityId($entityId, $entityType)
     {
@@ -87,6 +89,7 @@ class TranslationRepository
      * @param  string $type
      *
      * @return Illuminate\Support\Collection
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function getEntitiesByTypeAndLang($lang, $type)
     {

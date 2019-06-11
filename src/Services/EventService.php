@@ -88,6 +88,7 @@ class EventService extends BaseService
      * @param  array $config
      *
      * @return string
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function asHtml($config)
     {
@@ -152,6 +153,7 @@ class EventService extends BaseService
      * @param  string $class
      *
      * @return string
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function links($class = null)
     {
@@ -175,6 +177,7 @@ class EventService extends BaseService
      * Get templates as options
      *
      * @return array
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function getTemplatesAsOptions()
     {

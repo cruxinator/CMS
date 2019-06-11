@@ -55,6 +55,7 @@ class FileRepository extends CmsRepository
      * @param array $payload
      *
      * @return Files
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function update($files, $payload)
     {

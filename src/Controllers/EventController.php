@@ -23,6 +23,7 @@ class EventController extends GrafiteCmsController
      * Display a listing of the Event.
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function index()
     {
@@ -39,6 +40,7 @@ class EventController extends GrafiteCmsController
      * @param Request $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function search(Request $request)
     {
@@ -56,6 +58,7 @@ class EventController extends GrafiteCmsController
      * Show the form for creating a new Event.
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function create()
     {
@@ -68,6 +71,7 @@ class EventController extends GrafiteCmsController
      * @param EventRequest $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function store(Request $request)
     {
@@ -93,6 +97,7 @@ class EventController extends GrafiteCmsController
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function edit($id)
     {
@@ -110,10 +115,11 @@ class EventController extends GrafiteCmsController
     /**
      * Update the specified Event in storage.
      *
-     * @param int          $id
+     * @param int $id
      * @param EventRequest $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function update($id, EventRequest $request)
     {
@@ -141,6 +147,7 @@ class EventController extends GrafiteCmsController
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function destroy($id)
     {
@@ -165,6 +172,7 @@ class EventController extends GrafiteCmsController
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function history($id)
     {

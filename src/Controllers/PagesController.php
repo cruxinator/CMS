@@ -22,6 +22,7 @@ class PagesController extends GrafiteCmsController
      * Display a listing of the Pages.
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function index()
     {
@@ -38,6 +39,7 @@ class PagesController extends GrafiteCmsController
      * @param Request $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function search(Request $request)
     {
@@ -55,6 +57,7 @@ class PagesController extends GrafiteCmsController
      * Show the form for creating a new Pages.
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function create()
     {
@@ -64,9 +67,10 @@ class PagesController extends GrafiteCmsController
     /**
      * Store a newly created Pages in storage.
      *
-     * @param PagesRequest $request
+     * @param Request $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function store(Request $request)
     {
@@ -92,6 +96,7 @@ class PagesController extends GrafiteCmsController
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function edit($id)
     {
@@ -109,10 +114,11 @@ class PagesController extends GrafiteCmsController
     /**
      * Update the specified Pages in storage.
      *
-     * @param int          $id
+     * @param int $id
      * @param PagesRequest $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function update($id, PagesRequest $request)
     {
@@ -140,6 +146,7 @@ class PagesController extends GrafiteCmsController
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function destroy($id)
     {
@@ -164,6 +171,7 @@ class PagesController extends GrafiteCmsController
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function history($id)
     {

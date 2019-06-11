@@ -29,6 +29,7 @@ class ImagesController extends GrafiteCmsController
      * @param Request $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function index(Request $request)
     {
@@ -47,6 +48,7 @@ class ImagesController extends GrafiteCmsController
      * @param Request $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function search(Request $request)
     {
@@ -64,6 +66,7 @@ class ImagesController extends GrafiteCmsController
      * Show the form for creating a new Images.
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function create()
     {
@@ -73,9 +76,10 @@ class ImagesController extends GrafiteCmsController
     /**
      * Store a newly created Images in storage.
      *
-     * @param ImagesRequest $request
+     * @param Request $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function store(Request $request)
     {
@@ -110,9 +114,10 @@ class ImagesController extends GrafiteCmsController
     /**
      * Store a newly created Files in storage.
      *
-     * @param FileRequest $request
+     * @param Request $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function upload(Request $request)
     {
@@ -140,6 +145,7 @@ class ImagesController extends GrafiteCmsController
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function edit($id)
     {
@@ -157,10 +163,11 @@ class ImagesController extends GrafiteCmsController
     /**
      * Update the specified Images in storage.
      *
-     * @param int           $id
+     * @param int $id
      * @param ImagesRequest $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function update($id, ImagesRequest $request)
     {
@@ -193,6 +200,7 @@ class ImagesController extends GrafiteCmsController
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function destroy($id)
     {
@@ -224,6 +232,7 @@ class ImagesController extends GrafiteCmsController
      * @param  string $ids
      *
      * @return Redirect
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function bulkDelete($ids)
     {
@@ -255,7 +264,9 @@ class ImagesController extends GrafiteCmsController
     /**
      * Display the specified Images.
      *
+     * @param Request $request
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function apiList(Request $request)
     {
@@ -271,9 +282,10 @@ class ImagesController extends GrafiteCmsController
     /**
      * Store a newly created Images in storage.
      *
-     * @param ImagesRequest $request
+     * @param Request $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function apiStore(Request $request)
     {

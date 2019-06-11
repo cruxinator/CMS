@@ -46,6 +46,7 @@ class AssetController extends GrafiteCmsController
      * @param string $encRealFileName
      *
      * @return Downlaod
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function asDownload($encFileName, $encRealFileName)
     {

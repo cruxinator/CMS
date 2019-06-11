@@ -31,11 +31,12 @@ class CmsService
     /**
      * Get a module's asset.
      *
-     * @param string $module      Module name
-     * @param string $path        Path to module asset
+     * @param string $module Module name
+     * @param string $path Path to module asset
      * @param string $contentType Asset type
      *
      * @return string
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function asset($path, $contentType = 'null', $fullURL = true)
     {
@@ -53,6 +54,7 @@ class CmsService
      * @param  string $realFileName
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function fileAsDownload($fileName, $realFileName)
     {
@@ -63,6 +65,7 @@ class CmsService
      * Check if default CMS language
      *
      * @return bool
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function isDefaultLanguage()
     {
@@ -80,6 +83,7 @@ class CmsService
      * @param  string $itemClass
      *
      * @return string
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function languageLinks($linkClass = 'nav-link', $itemClass = 'nav-item')
     {
@@ -213,10 +217,11 @@ class CmsService
      * Edit button.
      *
      * @param string $type
-     * @param int    $id
+     * @param int $id
      * @param string $class
      *
      * @return string
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function editBtn($type = null, $id = null, $class = "btn-outline-secondary")
     {
@@ -237,6 +242,7 @@ class CmsService
      * @param  string $string
      *
      * @return string
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function url($string)
     {
@@ -261,10 +267,11 @@ class CmsService
      * Another form of the edit button
      *
      * @param string $type
-     * @param int    $id
+     * @param int $id
      * @param string $class
      *
      * @return string
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function editBtnSecondary($type = null, $id = null)
     {
@@ -277,6 +284,7 @@ class CmsService
      * @param obj $object
      *
      * @return string
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function rollbackUrl($object)
     {
@@ -308,6 +316,7 @@ class CmsService
      * Collect items for a site map
      *
      * @return array
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function collectSiteMapItems()
     {

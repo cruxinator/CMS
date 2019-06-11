@@ -26,6 +26,7 @@ class ModuleComposer extends Command
      * Execute the console command.
      *
      * @return mixed
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function handle()
     {

@@ -28,6 +28,7 @@ class MenuController extends GrafiteCmsController
      * Display a listing of the Menu.
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function index()
     {
@@ -44,6 +45,7 @@ class MenuController extends GrafiteCmsController
      * @param Request $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function search(Request $request)
     {
@@ -61,6 +63,7 @@ class MenuController extends GrafiteCmsController
      * Show the form for creating a new Menu.
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function create()
     {
@@ -70,9 +73,10 @@ class MenuController extends GrafiteCmsController
     /**
      * Store a newly created Menu in storage.
      *
-     * @param MenuRequest $request
+     * @param Request $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function store(Request $request)
     {
@@ -102,6 +106,7 @@ class MenuController extends GrafiteCmsController
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function edit($id)
     {
@@ -121,10 +126,11 @@ class MenuController extends GrafiteCmsController
     /**
      * Update the specified Menu in storage.
      *
-     * @param int         $id
+     * @param int $id
      * @param MenuRequest $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function update($id, MenuRequest $request)
     {
@@ -156,6 +162,7 @@ class MenuController extends GrafiteCmsController
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function destroy($id)
     {
@@ -184,7 +191,10 @@ class MenuController extends GrafiteCmsController
     /**
      * Set the order
      *
+     * @param $id
+     * @param Request $request
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function setOrder($id, Request $request)
     {

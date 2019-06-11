@@ -24,6 +24,7 @@ class BlogController extends Controller
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function all()
     {
@@ -45,6 +46,7 @@ class BlogController extends Controller
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function tag($tag)
     {
@@ -66,6 +68,7 @@ class BlogController extends Controller
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function show($url)
     {

@@ -22,6 +22,7 @@ class GrafiteCmsFeatureController extends GrafiteCmsController
      * @param int $id
      *
      * @return Redirect
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function revert($id)
     {
@@ -44,9 +45,10 @@ class GrafiteCmsFeatureController extends GrafiteCmsController
      * Rollback to a previous version of an entity.
      *
      * @param string $entity
-     * @param int    $id
+     * @param int $id
      *
      * @return Redirect
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function rollback($entity, $id)
     {
@@ -83,9 +85,10 @@ class GrafiteCmsFeatureController extends GrafiteCmsController
      * Preview content.
      *
      * @param string $entity
-     * @param int    $id
+     * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function preview($entity, $id)
     {
@@ -131,7 +134,9 @@ class GrafiteCmsFeatureController extends GrafiteCmsController
      * Set the default lanugage for the session.
      *
      * @param Request $request
-     * @param string  $lang
+     * @param string $lang
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function setLanguage(Request $request, $lang)
     {
@@ -145,6 +150,7 @@ class GrafiteCmsFeatureController extends GrafiteCmsController
      * @param  int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function deleteHero($entity, $id)
     {

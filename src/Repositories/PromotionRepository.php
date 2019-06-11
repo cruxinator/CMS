@@ -41,7 +41,8 @@ class PromotionRepository extends CmsRepository
      * @param Promotion $widget
      * @param array $payload
      *
-     * @return Promotion
+     * @return bool
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function update($widget, $payload)
     {

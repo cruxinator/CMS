@@ -10,6 +10,7 @@ class AddHeroImages extends Migration
      * Run the migrations.
      *
      * @return void
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function up()
     {
@@ -26,6 +27,7 @@ class AddHeroImages extends Migration
      * Reverse the migrations.
      *
      * @return void
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function down()
     {

@@ -22,6 +22,7 @@ class WidgetsController extends GrafiteCmsController
      * Display a listing of the Widgets.
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function index()
     {
@@ -38,6 +39,7 @@ class WidgetsController extends GrafiteCmsController
      * @param Request $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function search(Request $request)
     {
@@ -55,6 +57,7 @@ class WidgetsController extends GrafiteCmsController
      * Show the form for creating a new Widgets.
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function create()
     {
@@ -64,9 +67,10 @@ class WidgetsController extends GrafiteCmsController
     /**
      * Store a newly created Widgets in storage.
      *
-     * @param WidgetRequest $request
+     * @param Request $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function store(Request $request)
     {
@@ -89,6 +93,7 @@ class WidgetsController extends GrafiteCmsController
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function edit($id)
     {
@@ -106,10 +111,11 @@ class WidgetsController extends GrafiteCmsController
     /**
      * Update the specified Widgets in storage.
      *
-     * @param int            $id
+     * @param int $id
      * @param WidgetRequest $request
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function update($id, WidgetRequest $request)
     {
@@ -134,6 +140,7 @@ class WidgetsController extends GrafiteCmsController
      * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function destroy($id)
     {

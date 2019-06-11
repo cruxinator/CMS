@@ -103,6 +103,7 @@ class AssetService
      * @param string $encRealFileName
      *
      * @return Downlaod
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function asDownload($encFileName, $encRealFileName)
     {
@@ -192,6 +193,7 @@ class AssetService
      * @param  string $fileName
      *
      * @return string
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function getFilePath($fileName)
     {
@@ -212,6 +214,8 @@ class AssetService
      * @param  string $ext
      *
      * @return mixed
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function getFileContent($fileName, $contentType, $ext)
     {

@@ -120,5 +120,4 @@ class CmsModel extends Model
 
         return false;
     }
-
 }

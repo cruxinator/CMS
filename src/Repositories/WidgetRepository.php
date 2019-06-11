@@ -38,17 +38,22 @@ class WidgetRepository extends CmsRepository
     /**
      * Updates Widget in the database
      *
-     * @param Widgets $widget
+     * @param Widget $widget
      * @param array $payload
      *
-     * @return Widgets
+     * @return bool|Widget
      */
     public function update($widget, $payload)
     {
         $payload['name'] = htmlentities($payload['name']);
 
         if (!empty($payload['lang']) && $payload['lang'] !== config('cms.default-language', 'en')) {
-            return $this->translationRepo->createOrUpdate($widget->id, 'Grafite\Cms\Models\Widget', $payload['lang'], $payload);
+            return $this->translationRepo->createOrUpdate(
+                $widget->id,
+                'Grafite\Cms\Models\Widget',
+                $payload['lang'],
+                $payload
+            );
         } else {
             unset($payload['lang']);
 

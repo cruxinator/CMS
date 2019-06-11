@@ -88,7 +88,8 @@ class FileRepository extends CmsRepository
 
         foreach ($files as $file) {
             array_push($allFiles, [
-                'file_identifier' => CryptoService::url_encode($file->name).'/'.CryptoService::url_encode($file->location),
+                'file_identifier' => CryptoService::url_encode($file->name).'/'
+                                     .CryptoService::url_encode($file->location),
                 'file_name' => $file->name,
                 'file_date' => $file->created_at->format('F jS, Y'),
             ]);

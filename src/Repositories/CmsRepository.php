@@ -204,7 +204,8 @@ class CmsRepository
     public function parseTemplate($payload, $currentBlocks, $module)
     {
         if (isset($payload['template'])) {
-            $content = file_get_contents(base_path('resources/themes/'.config('cms.frontend-theme').'/'.$module.'/'.$payload['template'].'.blade.php'));
+            $content = file_get_contents(base_path('resources/themes/'.config('cms.frontend-theme').'/'
+                                                   .$module.'/'.$payload['template'].'.blade.php'));
 
             preg_match_all('/->block\((.*)\)/', $content, $pageMethodMatches);
             preg_match_all('/\@block\((.*)\)/', $content, $bladeMatches);

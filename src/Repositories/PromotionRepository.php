@@ -38,17 +38,22 @@ class PromotionRepository extends CmsRepository
     /**
      * Updates Promotion in the database
      *
-     * @param Promotions $widget
+     * @param Promotion $widget
      * @param array $payload
      *
-     * @return Promotions
+     * @return Promotion
      */
     public function update($widget, $payload)
     {
         $payload['slug'] = str_slug($payload['slug']);
 
         if (!empty($payload['lang']) && $payload['lang'] !== config('cms.default-language', 'en')) {
-            return $this->translationRepo->createOrUpdate($widget->id, 'Grafite\Cms\Models\Promotion', $payload['lang'], $payload);
+            return $this->translationRepo->createOrUpdate(
+                $widget->id,
+                'Grafite\Cms\Models\Promotion',
+                $payload['lang'],
+                $payload
+            );
         } else {
             unset($payload['lang']);
 

@@ -85,7 +85,13 @@ class Image extends CmsModel
         $url = Storage::disk(Config::get('cms.storage-location', 'local'))->url($this->location);
 
         if (!is_null(config('cms.cloudfront'))) {
-            $url = str_replace(config('filesystems.disks.s3.bucket').'.s3.'.config('filesystems.disks.s3.region').'.amazonaws.com', config('cms.cloudfront'), $url);
+            $url = str_replace(
+                config('filesystems.disks.s3.bucket')
+                .'.s3.'.config('filesystems.disks.s3.region')
+                .'.amazonaws.com',
+                config('cms.cloudfront'),
+                $url
+            );
         }
 
         return $url;
@@ -186,9 +192,14 @@ class Image extends CmsModel
     {
         $imagePath = app(AssetService::class)->generateImage('File Not Found');
 
-        $image = InterventionImage::make($imagePath)->resize(config('cms.preview-image-size', 800), null, function ($constraint) {
-            $constraint->aspectRatio();
-        });
+        $image = InterventionImage::make($imagePath)
+            ->resize(
+                config('cms.preview-image-size', 800),
+                null,
+                function ($constraint) {
+                    $constraint->aspectRatio();
+                }
+            );
 
         return (string) $image->encode('data-url');
     }

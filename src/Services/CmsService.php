@@ -218,7 +218,7 @@ class CmsService
      *
      * @return string
      */
-    public function editBtn($type = null, $id = null, $class="btn-outline-secondary")
+    public function editBtn($type = null, $id = null, $class = "btn-outline-secondary")
     {
         if (Gate::allows('cms', Auth::user())) {
             if (!is_null($id)) {

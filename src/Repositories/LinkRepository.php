@@ -81,7 +81,12 @@ class LinkRepository extends CmsRepository
         $payload['external'] = isset($payload['external']) ? $payload['external'] : 0;
 
         if (!empty($payload['lang']) && $payload['lang'] !== config('cms.default-language', 'en')) {
-            return $this->translationRepo->createOrUpdate($link->id, 'Grafite\Cms\Models\Link', $payload['lang'], $payload);
+            return $this->translationRepo->createOrUpdate(
+                $link->id,
+                'Grafite\Cms\Models\Link',
+                $payload['lang'],
+                $payload
+            );
         }
 
         unset($payload['lang']);

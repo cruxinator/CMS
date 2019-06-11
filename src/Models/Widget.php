@@ -5,6 +5,9 @@ namespace Grafite\Cms\Models;
 use Grafite\Cms\Models\CmsModel;
 use Grafite\Cms\Traits\Translatable;
 
+/**
+ * @property int id
+ */
 class Widget extends CmsModel
 {
     use Translatable;
@@ -29,6 +32,11 @@ class Widget extends CmsModel
         'slug',
         'content',
     ];
+
+    public function history()
+    {
+        return Archive::where('entity_type', get_class($this))->where('entity_id', $this->id)->get();
+    }
 
     public function __construct(array $attributes = [])
     {

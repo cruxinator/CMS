@@ -67,7 +67,12 @@ class Blog extends CmsModel
      */
     public function getHeroImageUrlAttribute()
     {
-        return url(str_replace('public/', 'storage/', $this->hero_image));
+        $base = 'https://fakeimg.pl/200x200/777777/777777/';
+
+        if ($this->hero_image) {
+            return url(str_replace('public/', 'storage/', $this->hero_image));
+        }
+        return $base;
     }
 
     public function history()

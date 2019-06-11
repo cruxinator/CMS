@@ -3,10 +3,10 @@
 namespace Grafite\Cms\Repositories;
 
 use Cms;
-use Config;
 use CryptoService;
 use Grafite\Cms\Models\Image;
 use Grafite\Cms\Services\FileService;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Schema;
 
 class ImageRepository extends CmsRepository
@@ -15,12 +15,20 @@ class ImageRepository extends CmsRepository
 
     public $table;
 
+    /**
+     * ImageRepository constructor.
+     * @param Image $model
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
     public function __construct(Image $model)
     {
         $this->model = $model;
         $this->table = config('cms.db-prefix').'images';
     }
 
+    /**
+     * @return CmsRepository[]|\Illuminate\Database\Eloquent\Collection
+     */
     public function published()
     {
         return $this->model->where('is_published', 1)
@@ -41,6 +49,7 @@ class ImageRepository extends CmsRepository
     /**
      * Returns all Images for the API.
      *
+     * @param string|null $tag
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
     public function getImagesByTag($tag = null)
@@ -81,6 +90,7 @@ class ImageRepository extends CmsRepository
      * @param array $input
      *
      * @return Images
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function apiStore($input)
     {
@@ -107,6 +117,7 @@ class ImageRepository extends CmsRepository
      * @param array $input
      *
      * @return Images
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function store($input)
     {
@@ -137,10 +148,11 @@ class ImageRepository extends CmsRepository
     /**
      * Updates Images
      *
-     * @param Images $images
-     * @param array  $input
+     * @param Image $image
+     * @param array $input
      *
-     * @return Images
+     * @return Image|bool
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function update($image, $input)
     {

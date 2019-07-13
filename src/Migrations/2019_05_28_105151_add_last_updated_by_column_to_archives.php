@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -38,7 +39,11 @@ class AddLastUpdatedByColumnToArchives extends Migration
     public function down()
     {
         Schema::table(config('cms.db-prefix', '').'archives', function (Blueprint $table) {
-            $table->dropForeign(['updated_by']);
+            $connName = DB::connection()->getPdo()->getAttribute(PDO::ATTR_DRIVER_NAME);
+
+            if ('sqlite' != $connName) {
+                $table->dropForeign(['updated_by']);
+            }
             $table->dropColumn(['updated_by']);
         });
     }

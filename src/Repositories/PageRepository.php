@@ -33,6 +33,7 @@ class PageRepository extends CmsRepository
      */
     public function store($payload)
     {
+        $tz = config('app.timezone');
         $payload = $this->parseBlocks($payload, 'pages');
 
         $payload['title'] = htmlentities($payload['title']);
@@ -40,8 +41,8 @@ class PageRepository extends CmsRepository
         $payload['is_published'] = (isset($payload['is_published'])) ? (bool) $payload['is_published'] : 0;
         $payload['published_at'] =
             (isset($payload['published_at']) && !empty($payload['published_at']))
-                ? Carbon::parse($payload['published_at'])->format('Y-m-d H:i:s')
-                : Carbon::now(config('app.timezone'))->format('Y-m-d H:i:s');
+                ? Carbon::parse($payload['published_at'], $tz)->format('Y-m-d H:i:s')
+                : Carbon::now($tz)->format('Y-m-d H:i:s');
 
         if (isset($payload['hero_image'])) {
             $file = request()->file('hero_image');
@@ -95,6 +96,7 @@ class PageRepository extends CmsRepository
     public function update($page, $payload)
     {
         $payload = $this->parseBlocks($payload, 'pages');
+        $tz = config('app.timezone');
 
         if (isset($payload['hero_image'])) {
             app(FileService::class)->delete($page->hero_image);
@@ -116,8 +118,8 @@ class PageRepository extends CmsRepository
             $payload['url'] = Cms::convertToURL($payload['url']);
             $payload['is_published'] = (isset($payload['is_published'])) ? (bool) $payload['is_published'] : 0;
             $payload['published_at'] = (isset($payload['published_at']) && !empty($payload['published_at']))
-                ? Carbon::parse($payload['published_at'])->format('Y-m-d H:i:s')
-                : Carbon::now(config('app.timezone'))->format('Y-m-d H:i:s');
+                ? Carbon::parse($payload['published_at'], $tz)->format('Y-m-d H:i:s')
+                : Carbon::now($tz)->format('Y-m-d H:i:s');
 
             unset($payload['lang']);
 
